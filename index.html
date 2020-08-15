@@ -36,21 +36,44 @@
         </div>
     </div>
 <script>
-            const enterCity = document.getElementById('enter-city').value;
-            const image = document.getElementById('image');
-            const cityName = document.getElementById('city-name');
-            const temperature = document.getElementById('temperature');
-            const status = document.getElementById('status'); 
+            // const enterCity = document.getElementById('enter-city').value;
+            // const image = document.getElementById('image');
+            // const cityName = document.getElementById('city-name');
+            // const temperature = document.getElementById('temperature');
+            // const status = document.getElementById('status'); 
              
-            const searchBtn = document.getElementById('search').addEventListener('click', function(){    
-                 fetch("https://api.openweathermap.org/data/2.5/weather?q=dhaka&appid=7e8ba51c32b70856f0f40f11213d95c2")
+            // const searchBtn = document.getElementById('search').addEventListener('click', function(){    
+            //      fetch('https://api.openweathermap.org/data/2.5/weather?q=dhaka&appid=7e8ba51c32b70856f0f40f11213d95c2')
+            //      .then(res => res.json())
+            //      .then(data => {
+            //       console.log(data);
+            //      })
+                 
+            // })
+            const weatherApi = {
+            key: "2c184dd171013138d018de35731d14d4",
+            api: "https://api.openweathermap.org/data/2.5/weather"
+            }
+
+            function weatherUpdate(){
+                const cityName = document.getElementById('city-name').innerText;
+                fetch(`${weatherApi.api}?q=${cityName}&appid=${weatherApi.key}&units=metric`)
                 .then(res => res.json())
                 .then(data => {
-               
-                 console.log(data);
-                
-                 })
-                 
+                    const weather = data;
+                    weather = (Math.round(weather.main.temp));
+                    document.getElementById('temperature').innerText = weather;
+
+                    const status = data;
+                    weatherType = (weatherType.weather[0].main);
+                    document.getElementById('status').innerText = weatherType;
+                })
+            }
+
+            document.getElementById('search').addEventListener('click', function(){
+                const cityName = document.getElementById('enter-city').value;
+                document.getElementById('city-name').innerText = cityName;
+                weatherUpdate();
             })
       
            
