@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Temperature Hot</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url(images/bg-image.jpg) no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form class="col-md-6 m-auto py-5">
+            <div class="input-group mb-3">
+                <input id="enter-city" type="text" class="form-control" placeholder="Enter a location for Weather ...">
+                <div class="input-group-append">
+                    <button id="search" type="button" class="btn btn-danger">Search</button>
+                </div>
+            </div>
+        </form>
+        <div class="weather-status text-white text-center">
+            <img id="image" src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+            <h1 id="city-name">Dhaka</h1>
+            <h3><span id="temperature">38.06</span>&deg;C</h3>
+            <h1 id="status" class="lead">Clouds</h1>
+        </div>
+    </div>
+<script>
+            const enterCity = document.getElementById('enter-city').value;
+            const image = document.getElementById('image');
+            const cityName = document.getElementById('city-name');
+            const temperature = document.getElementById('temperature');
+            const status = document.getElementById('status'); 
+             
+            const searchBtn = document.getElementById('search').addEventListener('click', function(){    
+                 fetch("https://api.openweathermap.org/data/2.5/weather?q=dhaka&appid=7e8ba51c32b70856f0f40f11213d95c2")
+                .then(res => res.json())
+                .then(data => {
+               
+                 console.log(data);
+                
+                 })
+                 
+            })
+      
+           
+        
+
+      
+        
+</script>
+</body>
+
+</html>
