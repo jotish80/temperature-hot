@@ -51,6 +51,9 @@
                document.getElementById('temperature').innerText = calTemp;
                const desc = data['weather'][0]['description'];
                document.getElementById('status').innerText = desc;
+               const image = data.weather[0].icon;
+               document.getElementById('image').src = `https://openweathermap.org/img/wn/${image}@2x.png`;
+               console.log(data);
            })
                   
          })
