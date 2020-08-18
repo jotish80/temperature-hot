@@ -36,10 +36,11 @@
         </div>
     </div>
 <script>
+     
              const country = document.getElementById('enter-city');
              document.getElementById('search').addEventListener('click', function(){
           
-                fetch('https://api.openweathermap.org/data/2.5/weather?q='+country.value+'&appid=61f9726bf372ba3ddfe31b985c942ce2')
+                fetch('https://api.openweathermap.org/data/2.5/weather?q='+country.value+'&appid=198b6e463956acad121f39faf5197814')
                 .then(res => res.json())
                 .then(data =>{
                     
